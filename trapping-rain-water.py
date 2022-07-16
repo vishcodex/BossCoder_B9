@@ -5,25 +5,41 @@ from typing import List
 
 class Solution:
 
-    # Solving using Dynamic Programming
-
+    #  TWO POINTER APPROACH
     def trap(self, height: List[int]) -> int:
-            N = len(height)
-            left_max = N * [0]
-            right_max = N * [0]
-            ans = 0
-            for i in range(N):
-                print("i", i)
-                if i == 0:
-                    left_max[i] = height[i]
-                    right_max[N-1-i] = height[N-1-i]
-                else:
-                    left_max[i] = max(left_max[i-1], height[i])
-                    right_max[N-1-i] = max(right_max[N-i], height[N-1-i])
+        i, j = 0, len(height) - 1
+        left_max, right_max = height[i], height[j]
+        res = 0
+        while i < j:
+            left_max = max(left_max, height[i])
+            right_max = max(right_max, height[j])
+            if left_max < right_max:
+               res += left_max - height[i]
+               i += 1
+            else:
+               res += right_max - height[j]
+               j -= 1
+        return res
+
+    # # Solving using Dynamic Programming
+
+    # def trap(self, height: List[int]) -> int:
+    #         N = len(height)
+    #         left_max = N * [0]
+    #         right_max = N * [0]
+    #         ans = 0
+    #         for i in range(N):
+    #             print("i", i)
+    #             if i == 0:
+    #                 left_max[i] = height[i]
+    #                 right_max[N-1-i] = height[N-1-i]
+    #             else:
+    #                 left_max[i] = max(left_max[i-1], height[i])
+    #                 right_max[N-1-i] = max(right_max[N-i], height[N-1-i])
                 
-            for i in range(N):
-                ans += (min(left_max[i], right_max[i]) - height[i]) 
-            return ans
+    #         for i in range(N):
+    #             ans += (min(left_max[i], right_max[i]) - height[i]) 
+    #         return ans
 
 
     # BRUTEFORCE APPROACH
@@ -59,3 +75,7 @@ if __name__ == '__main__':
     ob = Solution()
     res = ob.trap([1,0,2,0,1,0,3,1,0,2])
     print(res)
+
+
+
+Ref: https://www.interviewbit.com/blog/trapping-rain-water/#:~:text=The%20key%20idea%20to%20solve,on%20top%20of%20the%20block.
