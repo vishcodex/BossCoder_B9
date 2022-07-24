@@ -18,9 +18,13 @@ class Solution:
                     x_list[i] += 1
                     y_list[j] += 1
 
+            # print(x_list, y_list)
+
         sum = 0
         for row in range(n):
             for col in range(m):
+                print(x_list, y_list)
+                print("row, col, mat[row][col], x_list[row], y_list[col]",row, col, mat[row][col], x_list[row], y_list[col])
                 if mat[row][col] == 1 and x_list[row] == 1 and y_list[col] == 1:
                     sum += 1
         return sum
