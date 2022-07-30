@@ -12,7 +12,6 @@ class Solution:
         a=sorted(arr)
         h=[]
         for ele in range(len(arr)):
-            print(sorted(arr[:ele]), sorted(arr[ele::]))
             h.extend(sorted(arr[:ele]))
             h.extend(sorted(arr[ele::]))
             print("h, a ",h, a)
