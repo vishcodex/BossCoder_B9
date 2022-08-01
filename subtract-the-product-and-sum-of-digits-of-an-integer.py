@@ -3,14 +3,14 @@
 class Solution:
     def subtractProductAndSum(self, n: int) -> int:
 
-        # m = 1
-        # s = 0
+        m = 1
+        s = 0
 
-        # for i in str(n):
-        #     m = m * int(i)
-        #     s = int(s) + int(i)
+        for i in str(n):
+            m = m * int(i)
+            s = int(s) + int(i)
 
-        # return m - s     
+        return m - s     
 
 
         # Solution using RECURSION
@@ -26,8 +26,6 @@ class Solution:
             #         lastDigit = n % 10
             #         leftNumber = n // 10
             #         return (lastDigit + sumOfDigits(leftNumber))
-
-
 
 
 if __name__ == '__main__':
